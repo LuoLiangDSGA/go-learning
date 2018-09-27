@@ -5,6 +5,7 @@ import "fmt"
 func main() {
 	fmt.Println("====solution1====")
 	solution1()
+	
 	fmt.Println("====solution2====")
 	solution2()
 }
