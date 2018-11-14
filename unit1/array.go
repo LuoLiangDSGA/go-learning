@@ -14,7 +14,7 @@ func array1() {
 	// go会自动统计元素的个数
 	b := [...]int{1, 2, 3}
 	c := [3][2]int{{1, 2}, {3, 4}, {5, 6}}
-	// create slice
+	// create slice 可增长的数组
 	s1 := a[2:4]
 }
 
