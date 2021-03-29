@@ -3,7 +3,7 @@ package main
 import "fmt"
 
 func main() {
-	// solution1()
+	solution1()
 	solution2()
 }
 

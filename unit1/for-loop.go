@@ -9,7 +9,10 @@
  */
 package main
 
-import "fmt"
+import (
+	"fmt"
+	"math"
+	)
 
 func forloop1() {
 	for i := 0; i < 10; i++ {
@@ -34,8 +37,27 @@ func forloop3() {
 	}
 }
 
+//牛顿法实现平方根函数
+//https://tour.go-zh.org/flowcontrol/8
+//z -= (z*z - x) / (2*z)
+func Sqrt(x float64) float64 {
+	z := 1.0
+	temp := 0.0
+	for {
+		z = z - (z * z - x) / (2 * z)
+		fmt.Println(z)
+		if math.Abs(z - temp) < 0.000000000000001 {
+			break
+		} else {
+			temp = z
+		}
+	}
+	return temp
+}
+
 func main() {
 	forloop1()
 	forloop2()
 	forloop3()
+	Sqrt(2)
 }

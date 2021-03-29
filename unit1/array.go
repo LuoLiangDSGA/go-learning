@@ -15,9 +15,14 @@ func array1() {
 	b := [...]int{1, 2, 3}
 	c := [3][2]int{{1, 2}, {3, 4}, {5, 6}}
 	// create slice 可增长的数组
-	s1 := a[2:4]
+	s1 := a[2:3]
+	fmt.Println(a)
+	fmt.Println(b)
+	fmt.Println(c)
+	fmt.Println(s1)
 }
 
 func main() {
 	array()
+	array1()
 }
