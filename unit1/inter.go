@@ -33,4 +33,10 @@ func main() {
 	printString(stringer)
 	var float = MyFloat(0.2)
 	printString(&float)
+	// 类型断言
+	a := stringer
+	s, ok := a.(*MyFloat)
+	fmt.Println(s, ok)
+	p, ok := a.(Person)
+	fmt.Println(p, ok)
 }
