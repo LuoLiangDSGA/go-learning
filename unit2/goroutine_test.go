@@ -23,3 +23,12 @@ func TestChannel(t *testing.T) {
 	fmt.Println("接受chan中的值为：", v)
 }
 
+func TestSingleTest(t *testing.T) {
+	SingleTest(make(chan int))
+}
+
+func SingleTest(out chan<- int) {
+	out <- 1
+	//i := <- out 编译失败，函数声明只能发送
+	//fmt.Println(i)
+}
