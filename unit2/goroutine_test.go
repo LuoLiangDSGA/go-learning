@@ -2,6 +2,7 @@ package unit2
 
 import (
 	"fmt"
+	"math/rand"
 	"testing"
 	"time"
 )
@@ -31,4 +32,33 @@ func SingleTest(out chan<- int) {
 	out <- 1
 	//i := <- out 编译失败，函数声明只能发送
 	//fmt.Println(i)
+}
+
+func TestConcurrentDownload(t *testing.T) {
+	first := make(chan string)
+	second := make(chan string)
+	third := make(chan string)
+	go func() {
+		first <- downloadFile("first file")
+	}()
+	go func() {
+		second <- downloadFile("second file")
+	}()
+	go func() {
+		third <- downloadFile("third file")
+	}()
+	select {
+	case p := <-first:
+		fmt.Println(p)
+	case p := <-second:
+		fmt.Println(p)
+	case p := <-third:
+		fmt.Println(p)
+	}
+}
+
+func downloadFile(s string) string {
+	x := rand.Intn(3)
+	time.Sleep(time.Duration(x) * time.Second)
+	return s + ":filePath"
 }
