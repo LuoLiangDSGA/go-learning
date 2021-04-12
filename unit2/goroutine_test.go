@@ -58,7 +58,9 @@ func TestConcurrentDownload(t *testing.T) {
 }
 
 func downloadFile(s string) string {
-	x := rand.Intn(3)
+	rand.Seed(time.Now().UnixNano())
+	x := rand.Intn(10)
+	fmt.Printf("%s 下载时间:%d \n", s, x)
 	time.Sleep(time.Duration(x) * time.Second)
 	return s + ":filePath"
 }
