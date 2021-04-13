@@ -84,6 +84,26 @@ func Test_cond(t *testing.T) {
 	wg.Wait()
 	// golang中的cond，wait, signal, broadcast就像Java中的wait，notify，notifyAll
 }
+//线程安全的map
+func Test_syncmap(t *testing.T) {
+	var sm sync.Map
+	// 添加元素
+	sm.Store(1, "a")
+	// load方法获取元素
+	if v, ok := sm.Load(1); ok {
+		fmt.Println(v)
+	}
+	if vv, ok := sm.LoadOrStore(1, "b"); ok {
+		fmt.Println(vv)
+	}
+	if vv, ok := sm.LoadOrStore(2, "b"); !ok {
+		fmt.Println(vv)
+	}
+	sm.Range(func(key, value interface{}) bool {
+		fmt.Println(key, ":", value)
+		return true
+	})
+}
 
 func add1(i int) {
 	mutex.Lock()
