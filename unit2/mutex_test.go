@@ -55,9 +55,36 @@ func Test_doOnce(t *testing.T) {
 		}()
 	}
 	for i := 0; i < 10; i++ {
-		<- done
+		<-done
 	}
 }
+
+// cond的使用
+func Test_cond(t *testing.T) {
+	cond := sync.NewCond(&sync.Mutex{}) //初始化一个条件
+	var wg sync.WaitGroup
+	wg.Add(11)
+	for i := 0; i < 10; i++ {
+		go func(num int) {
+			defer wg.Done()
+			fmt.Println(num, "号已经就位...")
+			cond.L.Lock()
+			cond.Wait() //等待枪响   这里wait方法注意需要加锁
+			fmt.Println(num, "号开始跑！！时间：", time.Now().String())
+			cond.L.Unlock()
+		}(i)
+	}
+	time.Sleep(2 * time.Second)
+	go func() {
+		defer wg.Done()
+		fmt.Println("裁判已经就位，准备发令枪")
+		fmt.Println("比赛开始，大家准备跑")
+		cond.Broadcast()
+	}()
+	wg.Wait()
+	// golang中的cond，wait, signal, broadcast就像Java中的wait，notify，notifyAll
+}
+
 func add1(i int) {
 	mutex.Lock()
 	defer mutex.Unlock()
