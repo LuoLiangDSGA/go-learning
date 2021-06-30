@@ -1,8 +1,17 @@
+## golang项目练习
+
+> 目的是快速熟悉golang常用的开发框架，完成一个简单的数据系统，主要技术栈为 `gin + gorm + viper`
+
 ## 初始化
+
+新建一个golang项目，并且安装需要的依赖
 
 ```shell
 go mod init blog 
 go get -u github.com/gin-gonic/gin
+go get github.com/spf13/viper
+go get -u gorm.io/gorm
+go get -u gorm.io/driver/mysql
 ```
 
 ## 数据
@@ -35,3 +44,4 @@ CREATE TABLE `blog_tag` (
     PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='文章标签管理';
 ```
+

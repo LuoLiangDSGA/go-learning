@@ -1,3 +1,14 @@
 #db
 db:
-  url: localhost:3306
+  type: mysql
+  host: localhost:3306
+  username: root
+  password: root
+  name: blog
+  table_prefix: blog
+
+#server
+http:
+  port: 8081
+  read_timeout: 1000
+  write_timeout: 1000
