@@ -1,0 +1,3 @@
+#db
+db:
+  url: localhost:3306
