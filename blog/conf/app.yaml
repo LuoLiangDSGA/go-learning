@@ -12,3 +12,6 @@ http:
   port: 8081
   read_timeout: 1000
   write_timeout: 1000
+
+app:
+  pageSize: 10

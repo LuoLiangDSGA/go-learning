@@ -2,14 +2,17 @@ package apis
 
 import (
 	"blog/model"
+	setting "blog/pkg"
+	"blog/util"
 	"github.com/gin-gonic/gin"
 	"log"
 	"net/http"
+	"strconv"
 )
 
 // 获取多个文章标签
 func GetTags(ctx *gin.Context) {
-	log.Printf("enter getTags")
+	log.Printf("enter GetTags")
 	name := ctx.Query("name")
 	maps := make(map[string]interface{})
 	data := make(map[string]interface{})
@@ -20,8 +23,8 @@ func GetTags(ctx *gin.Context) {
 	if arg := ctx.Query("state"); arg != "" {
 		maps["state"] = state
 	}
-	data["lists"] = model.GetTags(1, 1, maps)
-	data["total"] = 0
+	data["lists"] = model.GetTags(util.GetPage(ctx), setting.PageSize, maps)
+	data["total"] = model.GetTagTotal(maps)
 	ctx.JSON(http.StatusOK, gin.H{
 		"code": 200,
 		"msg":  "success",
@@ -31,7 +34,14 @@ func GetTags(ctx *gin.Context) {
 
 // 获取单个文章标签
 func GetTag(ctx *gin.Context) {
-
+	log.Printf("enter GetTag")
+	id, _ := strconv.Atoi(ctx.Query("id"))
+	tag, _ := model.GetTag(id)
+	ctx.JSON(http.StatusOK, gin.H{
+		"code": 200,
+		"msg":  "success",
+		"data": tag,
+	})
 }
 
 // 添加单个标签

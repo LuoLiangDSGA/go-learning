@@ -1,4 +1,4 @@
-## golang项目练习
+## golang项目实战
 
 > 目的是快速熟悉golang常用的开发框架，完成一个简单的数据系统，主要技术栈为 `gin + gorm + viper`
 
@@ -48,9 +48,3 @@ CREATE TABLE `blog_tag`
 ) ENGINE = InnoDB
   DEFAULT CHARSET = utf8 COMMENT ='文章标签管理';
 ```
-
-
-
-
-
-
