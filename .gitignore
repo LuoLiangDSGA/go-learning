@@ -25,3 +25,7 @@ nbbuild/
 dist/
 nbdist/
 .nb-gradle/
+/etcd/infra2.etcd/
+/etcd/infra3.etcd/
+/etcd/infra1.etcd/
+/etcd/default.etcd/

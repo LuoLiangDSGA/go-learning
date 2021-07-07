@@ -1,0 +1,26 @@
+# etcd1 启动
+etcd1: /tmp/etcd-download-test/etcd --name infra1 --initial-advertise-peer-urls http://127.0.0.1:12380 \
+  --listen-peer-urls http://127.0.0.1:12380 \
+  --listen-client-urls http://127.0.0.1:2379 \
+  --advertise-client-urls http://127.0.0.1:2379 \
+  --discovery https://discovery.etcd.io/5a9317f28f0ca7c1970219c22171266f
+
+etcd2: /tmp/etcd-download-test/etcd --name infra2 --initial-advertise-peer-urls http://127.0.0.1:22380 \
+  --listen-peer-urls http://127.0.0.1:22380 \
+  --listen-client-urls http://127.0.0.1:22379 \
+  --advertise-client-urls http://127.0.0.1:22379 \
+  --discovery https://discovery.etcd.io/5a9317f28f0ca7c1970219c22171266f
+
+/tmp/etcd-download-test/etcd --name infra0 --initial-advertise-peer-urls http://127.0.0.1:2380 \
+  --listen-peer-urls http://127.0.0.1:2380 \
+  --listen-client-urls http://127.0.0.1:2379 \
+  --advertise-client-urls http://127.0.0.1:2379 \
+  --discovery https://discovery.etcd.io/8f1db7657ba6dc8a5f1737ae3aec9a86
+
+  /tmp/etcd-download-test/etcd --name infra1 --initial-advertise-peer-urls http://127.0.0.1:22380 \
+    --listen-peer-urls http://127.0.0.1:22380 \
+    --listen-client-urls http://127.0.0.1:22379 \
+    --advertise-client-urls http://127.0.0.1:22379 \
+    --discovery https://discovery.etcd.io/8f1db7657ba6dc8a5f1737ae3aec9a86
+
+curl -X PUT http://127.0.0.1:2379/v2/keys/discovery/5a9317f28f0ca7c1970219c22171266f/_config/size -d value=3

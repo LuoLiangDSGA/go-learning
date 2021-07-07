@@ -37,8 +37,14 @@ mv /tmp/etcd-${ETCD_VER}-darwin-amd64/* /tmp/etcd-download-test && rm -rf mv /tm
 ```shell
 go get github.com/mattn/goreman
 ```
-
 使用上述命令即可安装
+
+集群搭建有三种方式，分别是：
+- 静态集群，预先知道每个节点的IP
+- 服务发现，不知道节点IP
+- DNS
+
+先使用静态集群的方式来搭建一个三个节点的etcd集群
 
 ### 编写集群脚本`procfile`
 
@@ -66,3 +72,4 @@ http://127.0.0.1:22380 is healthy: successfully committed proposal: took = 18.46
 http://127.0.0.1:12380 is healthy: successfully committed proposal: took = 18.280266ms
 ```
 
+动态发现和DNS发现的方式需要有多台服务器，暂时没这条件，所以这里先不纠结了。

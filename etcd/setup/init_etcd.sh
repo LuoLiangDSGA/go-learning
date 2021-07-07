@@ -15,3 +15,4 @@ mv /tmp/etcd-${ETCD_VER}-darwin-amd64/* /tmp/etcd-download-test && rm -rf mv /tm
 /tmp/etcd-download-test/etcd --version
 /tmp/etcd-download-test/etcdctl version
 /tmp/etcd-download-test/etcdutl version
+
