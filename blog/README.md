@@ -48,3 +48,6 @@ CREATE TABLE `blog_tag`
 ) ENGINE = InnoDB
   DEFAULT CHARSET = utf8 COMMENT ='文章标签管理';
 ```
+- gorm文档：https://gorm.io/zh_CN/docs/update.html
+- 代码：https://github.com/EDDYCJY/go-gin-example/blob/master/models/tag.go
+- 博客：https://eddycjy.gitbook.io/golang/di-3-ke-gin/api-03

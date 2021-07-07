@@ -23,7 +23,7 @@ func GetTags(ctx *gin.Context) {
 	if arg := ctx.Query("state"); arg != "" {
 		maps["state"] = state
 	}
-	data["lists"] = model.GetTags(util.GetPage(ctx), setting.PageSize, maps)
+	data["lists"], _ = model.GetTags(util.GetPage(ctx), setting.PageSize, maps)
 	data["total"] = model.GetTagTotal(maps)
 	ctx.JSON(http.StatusOK, gin.H{
 		"code": 200,
