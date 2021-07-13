@@ -28,7 +28,7 @@ mv /tmp/etcd-${ETCD_VER}-darwin-amd64/* /tmp/etcd-download-test && rm -rf mv /tm
 
 其他环境的脚本可[在此查看](https://github.com/etcd-io/etcd/releases)
 
-### 安装goreman
+### 集群搭建
 
 [goreman](https://github.com/mattn/goreman) 是一个Go语言编写的多进程管理工具，是对Ruby下使用广泛的的Foreman的重写。
 
@@ -42,7 +42,7 @@ go get github.com/mattn/goreman
 集群搭建有三种方式，分别是：
 - 静态集群，预先知道每个节点的IP
 - 服务发现，不知道节点IP
-- DNS
+- DNS发现
 
 先使用静态集群的方式来搭建一个三个节点的etcd集群
 
@@ -72,4 +72,5 @@ http://127.0.0.1:22380 is healthy: successfully committed proposal: took = 18.46
 http://127.0.0.1:12380 is healthy: successfully committed proposal: took = 18.280266ms
 ```
 
-动态发现和DNS发现的方式需要有多台服务器，暂时没这条件，所以这里先不纠结了。
+动态发现和DNS发现的方式需要有多台服务器，有需要可以根据[文档](https://etcd.io/docs/v3.5/op-guide/clustering/#etcd-discovery)自行实践。
+
