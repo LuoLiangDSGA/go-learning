@@ -4,7 +4,7 @@
 
 ### 安装etcd
 
-可以通过此脚本在macOS上安装etcd，安装成功后的etcd二进制文件目录为`/tmp/etcd-download-test/etcd`
+可以通过此脚本在macOS上安装etcd，安装成功后的etcd二进制文件为`/tmp/etcd-download-test/etcd`
 
 ``` shell
 ETCD_VER=v3.5.0
